@@ -10,7 +10,7 @@ const queryClient = new QueryClient();
 const AXIOS_URL =
   process.env.NODE_ENV === "production"
     ? process.env.REACT_APP_BACKEND_URL
-    : "http://localhost:3001/api/";
+    : "http://localhost:3001";
 
 const apiClient = axios.create({
   baseURL: AXIOS_URL,
