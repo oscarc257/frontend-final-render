@@ -8,7 +8,11 @@ import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const nav = useNavigate();
+
+  // Fetch user data
   const { data: user, isSuccess } = useUser();
+
+  // Hooks for updating user info
   const {
     mutate: UserUpdate,
     isSuccess: userUpdated,
@@ -16,6 +20,7 @@ const Profile = () => {
     isLoading: userUpdating,
   } = useUserUpdate();
 
+  // Hooks for deleting user
   const {
     mutate: UserDelete,
     isSuccess: userDeleted,
@@ -23,10 +28,11 @@ const Profile = () => {
     isLoading: userDeleting,
   } = useUserDelete();
 
-  //state
+  // State for form fields
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
+  // Populate form fields with user data when loaded
   useEffect(() => {
     if (isSuccess) {
       try {
@@ -36,6 +42,7 @@ const Profile = () => {
     }
   }, [isSuccess, user]);
 
+  // Body for update request
   const body = {
     firstName: firstName,
     lastName: lastName,
@@ -45,6 +52,7 @@ const Profile = () => {
     <MainContainer>
       <div className={styles.container}>
         <Title>Profile</Title>
+        {/* Profile update form */}
         <form action="submit" onSubmit={(e) => e.preventDefault()}>
           <div className={styles.formInner}>
             {/* FIRSTNAME */}
@@ -67,10 +75,11 @@ const Profile = () => {
                 onChange={(e) => setLastName(e.target.value)}
               />
             </div>
-            {/* BUTTON */}
+            {/* Update button */}
             <button onClick={() => UserUpdate(body)} disabled={userUpdating}>
               {userUpdating ? "Updating..." : "Update Info!"}
             </button>
+            {/* Success/Error messages */}
             {userUpdated && (
               <div style={{ marginTop: "1rem", color: "green" }}>Success</div>
             )}
@@ -79,10 +88,12 @@ const Profile = () => {
             )}
           </div>
         </form>
+        {/* Delete account button */}
         <button
           onClick={() =>
             UserDelete(null, {
               onSuccess: () => {
+                // Clear all queries and mutations, then navigate to auth page
                 queryClient.removeQueries();
                 queryClient.cancelQueries();
                 queryClient.cancelMutations();

@@ -56,7 +56,7 @@ const Auth = () => {
             Login Now
           </button>
         </div>
-        <Link style={{ textAlign: "center" }} to="/register">
+        <Link style={{ marginLeft: "-4rem" }} to="/register">
           Don't have an acc ?
         </Link>
         {isError && (

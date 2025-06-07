@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
-//POPPINS GOOGLE FONT
 
+// Reset and base styles
 * {
     margin: 0;
     padding: 0;
@@ -11,29 +11,77 @@
     list-style: none;
     font-family: "Poppins", sans-serif;
     text-decoration: none;
+    scroll-behavior: smooth;
 }
 
+// Modern color palette and glassmorphism variables
 :root {
-    //CUSTOM PROPERTIES
-    --color-active: #363636;
-    --color-inactive: #f0f0f0;
+    --color-active: #5c5cdb;
+    // --color-inactive: #f8f8fa;
     --color-red-100: #ffbece;
     --color-red-300: #fe7798;
     --color-red-600: #ff6275;
     --color-green-300: #e4f1d5;
     --color-green-600: #92c44c;
+    --color-blue-100: #eaf6ff;
     --color-blue-300: #b7dffd;
-    --color-blue-600: #5a92d6;
+    --color-blue-600: #4f8cff;
     --color-yellow-300: #fdeacc;
     --color-yellow-600: #f8aa35;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-blur: 18px;
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    --border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
+// App background with animated gradient
 .App {
+    min-height: 100vh;
     overflow-x: hidden;
-    background: linear-gradient(0deg,rgba(255, 255, 255, 1) 0%, rgba(122, 148, 98, 1) 100%);
+    background: linear-gradient(120deg, #b7dffd 50%, #4f8cff 100%);
+    animation: gradientMove 12s ease-in-out infinite alternate;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
 }
 
 .pageContainer {
     display: flex;
     user-select: none;
+    min-height: 100vh;
+    padding: 3.0rem 0 3.0rem 0;
+    justify-content: center;
+    align-items: flex-start;
+    background: none;
+}
+
+// Add a modern card style utility class
+.cardGlass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    border: var(--border);
+    padding: 2rem 1.5rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+    &:hover {
+        box-shadow: 0 16px 40px 0 rgba(31, 38, 135, 0.22);
+        transform: translateY(-2px) scale(1.01);
+    }
+}
+
+// Scrollbar styling for a modern touch
+::-webkit-scrollbar {
+    width: 8px;
+    background: var(--color-inactive);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--color-blue-300);
+    border-radius: 8px;
 }

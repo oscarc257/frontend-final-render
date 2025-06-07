@@ -45,7 +45,7 @@ const MobileNavbar = () => {
 
               {/* HOME */}
               <ListItemLink
-                url=''
+                url=""
                 optionClass={styles.linkColor}
                 clickHandler={closeNav}
               >
@@ -54,7 +54,7 @@ const MobileNavbar = () => {
 
               {/* CATEGORIES */}
               <ListItemLink
-                url='categories'
+                url="categories"
                 optionClass={styles.linkColor}
                 clickHandler={closeNav}
               >
@@ -63,7 +63,7 @@ const MobileNavbar = () => {
 
               {/* TRANSACTIONS */}
               <ListItemLink
-                url='transactions'
+                url="transactions"
                 optionClass={styles.linkColor}
                 clickHandler={closeNav}
               >
@@ -72,7 +72,7 @@ const MobileNavbar = () => {
 
               {/* Wallet */}
               <ListItemLink
-                url='wallet'
+                url="wallet"
                 optionClass={styles.linkColor}
                 clickHandler={closeNav}
               >
@@ -82,7 +82,7 @@ const MobileNavbar = () => {
               {/* Profile */}
               <div className={styles.mobileMenuLinks}>
                 <ListItemLink
-                  url='profile'
+                  url="profile"
                   optionClass={styles.linkColor}
                   clickHandler={closeNav}
                 >
@@ -93,7 +93,7 @@ const MobileNavbar = () => {
               {/* Settings */}
               <div className={styles.mobileMenuLinks}>
                 <ListItemLink
-                  url='settings'
+                  url="settings"
                   optionClass={styles.linkColor}
                   clickHandler={closeNav}
                 >
@@ -103,7 +103,7 @@ const MobileNavbar = () => {
 
               {/* LOGOUT*/}
               <button
-                url='logout'
+                url="logout"
                 onClick={() => {
                   logoutHandler(null, {
                     onSuccess: () => {

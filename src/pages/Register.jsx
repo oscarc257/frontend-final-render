@@ -125,7 +125,7 @@ const Register = () => {
           {/* REGISTER BTN */}
           <button type="submit">Register Now</button>
         </div>
-        <Link to="/auth" style={{ textAlign: "center" }}>
+        <Link to="/auth" style={{ marginLeft: "-4rem" }}>
           Already have an acc?
         </Link>
       </form>

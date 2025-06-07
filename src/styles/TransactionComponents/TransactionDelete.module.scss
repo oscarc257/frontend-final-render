@@ -1,17 +1,23 @@
 @use "../mixins.scss" as *;
+
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
   width: 100%;
 
   .dateSearchFilter {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
-    margin-bottom: 1.2rem;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    background: var(--glass-bg);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+    padding: 2rem 1.5rem;
+    backdrop-filter: blur(var(--glass-blur));
 
     .date {
       display: flex;
@@ -21,27 +27,54 @@
       option,
       select {
         @include inputStyle;
+        border-radius: 10px;
+        border: 1.5px solid var(--color-blue-100);
+        background: #f7faff;
+        font-size: 1.05rem;
+        padding: 0.8rem 0.7rem;
+        transition: border 0.2s, box-shadow 0.2s;
+        box-shadow: 0 2px 8px rgba(31, 38, 135, 0.05);
+        &:focus {
+          border: 1.5px solid var(--color-blue-600);
+          box-shadow: 0 4px 16px rgba(79, 140, 255, 0.10);
+          outline: none;
+        }
       }
       label {
-        font-size: 0.9rem;
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--color-blue-600);
       }
     }
 
     button {
       @include pinkButton(140px, 40px);
       align-self: center;
+      border-radius: 12px;
+      font-size: 1.08rem;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(31, 38, 135, 0.08);
+      transition: background 0.2s, box-shadow 0.2s;
+      margin-top: 0.5rem;
+      &:hover, &:focus-visible {
+        background: linear-gradient(90deg, #4f8cff 0%, #ffb347 100%);
+        color: #fff;
+        box-shadow: 0 4px 16px rgba(79, 140, 255, 0.12);
+      }
     }
   }
 
   .results {
-    margin-top: 1.2rem;
+    margin-top: 1.5rem;
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 800px;
+
     @media screen and (max-width: 500px) {
       gap: 2rem;
     }
+
     .container {
       display: unset;
 
@@ -52,6 +85,12 @@
         margin-right: 2rem;
         margin-bottom: 2rem;
         width: 100%;
+        background: var(--glass-bg);
+        border-radius: 16px;
+        box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+        padding: 1.2rem 1rem;
+        backdrop-filter: blur(var(--glass-blur));
+        transition: box-shadow 0.2s, transform 0.2s;
 
         @media screen and (max-width: 500px) {
           margin-right: 0;
@@ -67,28 +106,38 @@
 
         .iconContainer {
           cursor: pointer;
-          padding: 0.5rem;
-          border-radius: 10px;
+          padding: 0.6rem;
+          border-radius: 50%;
           border: 2px solid var(--color-red-300);
           display: flex;
+          align-items: center;
+          justify-content: center;
           background: var(--color-red-100);
-          transition: all ease-in-out 300ms;
+          box-shadow: 0 2px 8px rgba(255, 98, 117, 0.08);
+          transition: background 0.2s, box-shadow 0.2s, border 0.2s, transform 0.2s;
+          margin-left: 1rem;
+
           @media screen and (max-width: 420px) {
             width: 100%;
             justify-content: center;
             border-radius: 0 0 14px 14px;
             transform: translateY(-0.8rem);
+            margin-left: 0;
           }
           &:hover {
-            background: whitesmoke;
+            background: #fff0f3;
+            box-shadow: 0 4px 16px rgba(255, 98, 117, 0.13);
+            border: 2px solid var(--color-red-600);
+            transform: scale(1.08);
           }
           &:focus-visible {
-            outline: 2px solid black;
+            outline: 2px solid var(--color-red-600);
           }
           svg {
-            width: 25px;
-            height: 25px;
+            width: 27px;
+            height: 27px;
             color: var(--color-red-600);
+            transition: color 0.2s;
           }
         }
       }
